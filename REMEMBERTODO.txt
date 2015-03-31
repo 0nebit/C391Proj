@@ -1,0 +1,5 @@
+REMEMBER TO ADD THE FOLLOWING TO BASH FILE
+SO THAT UPLOADING MODULE WILL WORK.
+
+CLASSPATH=$CLASSPATH:/cshome/lisheung/catalina/webapps/proj1/WEB-INF/lib/commons-fileupload-1.0.jar
+export CLASSPATH
