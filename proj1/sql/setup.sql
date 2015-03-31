@@ -10,6 +10,8 @@ DROP TABLE radiology_record;
 DROP TABLE users;
 DROP TABLE persons;
 
+DROP SEQUENCE image_id_sequence;
+
 /*
  *  To store the personal information
  */
@@ -82,3 +84,5 @@ CREATE TABLE pacs_images (
    PRIMARY KEY(record_id,image_id),
    FOREIGN KEY(record_id) REFERENCES radiology_record
 );
+
+CREATE SEQUENCE image_id_sequence;
