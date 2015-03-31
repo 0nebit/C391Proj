@@ -186,30 +186,6 @@ public class UploadImage extends HttpServlet
 		{
 			response_message = ex.getMessage();
 		} 
-		/*
-		finally 
-		{
-			if(instream != null)
-			{
-				instream.close();
-			}
-
-			if(fullOutstream != null) 
-			{
-				fullOutstream.close();
-			}
-
-			if(thumbOutstream != null) 
-			{
-				thumbOutstream.close();
-			}
-
-			if(regularOutstream != null) 
-			{
-				regularOutstream.close();
-			}
-		}
-		*/
 	}
 
 	// Shrink image by a factor of n, and return the shrunk image.
