@@ -4,6 +4,22 @@
 </head>
 <body>
 	<h1>Data Analysis</h1>
+	
+	<div class="topcorner1">
+	<a href="http://ua15.cs.ualberta.ca:16060/proj1/HelpPage.html">Help Page</a>
+	<a href="url">Portal</a>
+	<a href="url">Logout</a>
+	</div>
+
+	<style type="text/css">
+ 	.topcorner1
+	{
+	   position:absolute;
+	   top:10;
+	   right:10;
+  	}
+	</style>
+	
 	<form name="analysis" method="post" action="olapResult.jsp">
 		<p>Find number of images for:</p>
 		<input name="cb_patient" type="checkbox" value="1">Patient Name<br>

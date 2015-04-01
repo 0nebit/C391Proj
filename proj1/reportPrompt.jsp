@@ -5,6 +5,22 @@
 </head>
 <body>
 	<h1>Generate Radiology Report</h1>
+	
+	<div class="topcorner1">
+	<a href="http://ua15.cs.ualberta.ca:16060/proj1/HelpPage.html">Help Page</a>
+	<a href="url">Portal</a>
+	<a href="url">Logout</a>
+	</div>
+
+	<style type="text/css">
+ 	.topcorner1
+	{
+	   position:absolute;
+	   top:10;
+	   right:10;
+  	}
+	</style>
+	
 	<form name="report" method="post" action="reportResult.jsp">
 		<H3><b>Diagnosis:</b><input name="input_diagnosis" type="text"><br></H3>
 		<p>Please enter dates as DD/MM/YYYY</p>

@@ -5,6 +5,21 @@
 <body>
   <h1>Data Analysis</h1>
   
+  <div class="topcorner1">
+	<a href="http://ua15.cs.ualberta.ca:16060/proj1/HelpPage.html">Help Page</a>
+	<a href="url">Portal</a>
+	<a href="url">Logout</a>
+	</div>
+
+	<style type="text/css">
+ 	.topcorner1
+	{
+	   position:absolute;
+	   top:10;
+	   right:10;
+  	}
+	</style>
+  
 	<%@ page import="java.sql.*, db.Database" %>
 	<%	
 		Boolean cb_patient = request.getParameter("cb_patient") != null;
