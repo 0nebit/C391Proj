@@ -91,5 +91,5 @@ CREATE SEQUENCE image_id_sequence;
  *  to store information for data analysis
  */
 CREATE OR REPLACE VIEW analysis_view AS
-SELECT r.patient_id, r.test_type, r.test_date, pi.image_id
-FROM radiology_record r FULL JOIN pacs_images pi ON r.record_id = pi.record_id;
+SELECT r.patient_id, r.test_type, r.test_date, i.image_id
+FROM radiology_record r FULL JOIN pacs_images pi ON r.record_id = i.record_id;

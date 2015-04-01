@@ -5,7 +5,7 @@
 <body>
 	<h1>Data Analysis</h1>
 	<form name="analysis" method="post" action="olapResult.jsp"></form>
-		<p>Display Images for:</p>
+		<p>Find Number of Images for:</p>
 		<input name="check_patient" type="checkbox" value="1">Patient Name<br>
 		<input name="check_test" type="checkbox" value="1">Test Type<br>
 		<input name="check_date" type="checkbox" value="1">Time Period<br>

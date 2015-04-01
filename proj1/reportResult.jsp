@@ -26,24 +26,24 @@
 		Statement statement = null;
 		ResultSet results = null;
 
-		String sql = "SELECT first_name, last_name, address, phone, test_date FROM persons p, radiology_record r WHERE p.person_id = r.patient_id AND r.diagnosis = '"+ diagnosis + "' AND r.test_date BETWEEN to_date('"+ start +"', 'DD/MM/YYYY') AND to_date('"+ end +"', 'DD/MM/YYYY') ORDER BY last_name";
+		String query = "SELECT first_name, last_name, address, phone, test_date FROM persons p, radiology_record r WHERE p.person_id = r.patient_id AND r.diagnosis = '"+ diagnosis + "' AND r.test_date BETWEEN to_date('"+ start +"', 'DD/MM/YYYY') AND to_date('"+ end +"', 'DD/MM/YYYY') ORDER BY last_name";
 
 		try {
-		statement = conn.createStatement();
-		results = statement.executeQuery(sql);
+			statement = conn.createStatement();
+			results = statement.executeQuery(query);
 		} catch (Exception e) {
-		if (e.getMessage().startsWith("ORA-01840") || e.getMessage().startsWith("ORA-01861")) {
-		  String error = "<p><b>Date must be in format DD/MM/YYYY</b></p>";
-		  session.setAttribute("error", error);
- 			response.sendRedirect("reportPrompt.jsp");
- 	  } else {
-		  out.println("<hr>" + e.getMessage() + "</hr>");
-		}
+			if (e.getMessage().startsWith("ORA-01840") || e.getMessage().startsWith("ORA-01861")) {
+		  		String error = "<p><b>Date must be in format DD/MM/YYYY</b></p>";
+		  		session.setAttribute("error", error);
+ 				response.sendRedirect("reportPrompt.jsp");
+ 	  		} else {
+		  		out.println("<hr>" + e.getMessage() + "</hr>");
+			}
 		}
 		
 		out.println(diagnosis + "<br><br>");
 		out.println("From:  " + start + "<br>");
-	  out.println("To:  " + end + "<br>");
+	  	out.println("To:  " + end + "<br>");
 
 	%>
 	
