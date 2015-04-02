@@ -6,6 +6,19 @@
 
 <h1>Help Page</h1>
 
+<div class="topcorner1">
+<a href="url">Portal</a>
+</div>
+
+<style type="text/css">
+	.topcorner1
+{
+   position:absolute;
+   top:10;
+   right:10;
+	}
+</style>
+
 <p><H3>Installing the Radiology Information System 2000</H3></p>
 
 <p>1. Clone the repository containing all the files you need at: https://github.com/CMPUT391CBJ/C391Proj
@@ -20,14 +33,14 @@ Will allow the user to login and be able to use the Radiology Information System
 <p><H3>Login As a Patient</H3></p>
 <p><u>Given links:</u>
 <br>
-<br><font color="0000FF">Searching</font>
+<br><font color="0000FF">Searching (Can only view his/her own records)</font>
 <br><font color="0000FF">Edit Personal Info</font>
 </p>
 
 <p><H3>Login As a Doctor</H3></p>
 <p><u>Given links:</u>
 <br>
-<br><font color="0000FF">Searching</font>
+<br><font color="0000FF">Searching (Can only view records of his/her patients)</font>
 <br><font color="0000FF">Edit Personal Info</font>
 </p>
 
@@ -35,7 +48,7 @@ Will allow the user to login and be able to use the Radiology Information System
 <p><u>Given links:</u>
 <br>
 <br><font color="0000FF">Upload Image</font>
-<br><font color="0000FF">Searching</font>
+<br><font color="0000FF">Searching (Can only view records done by oneself)</font>
 <br><font color="0000FF">Edit Personal Info</font>
 </p>
 
@@ -43,14 +56,14 @@ Will allow the user to login and be able to use the Radiology Information System
 <p><u>Given links:</u>
 <br>
 <br><font color="0000FF">Report Generating</font>
-<br><font color="0000FF">Searching</font>
+<br><font color="0000FF">Searching (Can view any records)</font>
 <br><font color="0000FF">User Management</font>
 <br><font color="0000FF">Data Analysis</font>
 <br><font color="0000FF">Edit Personal Info</font>
 </p>
 
 <p><H3>Logging Out</H3></p>
-At the bottom of every page there will be a logout link which will log the user out. This will take the user back to the welcome page.
+At the top right corner of every page there will be a logout link which will log the user out. This will take the user back to the welcome page.
 
 <p><H3>Edit Personal Info</H3></p>
 The user can click on this link to edit their personal information as well as change their password.
@@ -71,7 +84,10 @@ dfadf
 
 
 <p><H3>Data Analysis</H3></p>
-dasff
-
+As a system adminstrator, the user can generate and display an OLAP report for data analysis. A user of this module may choose to display the number of images for each patient, test type, and/or period of time. For example, a user may choose to display the number of images for each patient; or display the number of images  for each test type for each month. A user can choose any combination of patient, test type, and/or period of time via checkboxes. If the user choses a time period he/she must also choose the type of time period (week, month, year). If they do not select any option or a time period type, a message will prompt the user to select options.
+<br>
+<br>
+<br>
+<br>
 </body>
 </html>
