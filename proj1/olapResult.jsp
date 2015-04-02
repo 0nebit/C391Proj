@@ -47,18 +47,15 @@
 		if (cb_patient) {
 			query += " patient_id,";
 			group += " patient_id,";
-			table += "<th>Patient ID</th>";
-			//checks++;
+			table += "<th>Patient ID</th><th>First Name</th><th>LastName</th>";
 		} if (cb_test) {
 			query += " test_type,";
 			group += " test_type,";
 			table += "<th>Test Type</th>";
-			//checks++;
 		} if (cb_date) {
 			query += " TO_CHAR(TRUNC(test_date,";
 			group += " TO_CHAR(TRUNC(test_date,";
 			table += "<th>Test Date</th>";
-			//checks++;
 			switch (selected) {
 			  // weekly
 				case 1:
@@ -110,14 +107,40 @@
 				// print data
 				while (results.next()) {
 					out.println("<tr>");
-					for (int i = 1; i <= columns+1; i++) {
+					for (int i = 1; i <= columns; i++) {
 						out.println("<td>");
 						if (results.getString(i) != null) {
-							out.println(results.getString(i) + "</td>");
-						}
+							out.println(results.getString(i));
+							if ((cb_patient) && (i == 1)) {
+							  String nameQuery = "SELECT first_name, last_name FROM persons WHERE person_id = " + results.getString(i);
+							  Statement nameStatement = conn.createStatement();
+							  ResultSet nameResults = nameStatement.executeQuery(nameQuery);
+							  while (nameResults.next()) {
+							    out.println("</td>");
+							    out.println("<td>");
+							    out.println(nameResults.getString(1));
+							    out.println("</td>");
+						      out.println("<td>");
+							    out.println(nameResults.getString(2));
+							  }
+							  nameResults.close();
+							}
+						}	/* else {
+						  out.println("ANY");
+						  if ((cb_patient) && i == 1) {
+						    out.println("</td>");
+						    out.println("<td>");
+						    out.println("-");
+						    out.println("</td>");
+						    out.println("<td>");
+						    out.println("-");
+				  	  }
+				  	} */
+				  	out.println("</td>");
 					}
 					out.println("</tr>");
 				}
+				out.println("</table>");
 			} catch (Exception e) {
 		  		out.println("<hr>" + e.getMessage() + "</hr>");
 			} finally {
@@ -125,6 +148,5 @@
 			}
 
 		%>
-	</table>
 </body>
 </html>
