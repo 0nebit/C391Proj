@@ -153,19 +153,19 @@ public class UploadImage extends HttpServlet
 			String cmd = "SELECT * FROM pacs_images WHERE image_id = " + image_id + " FOR UPDATE";
 			rset = stmt.executeQuery(cmd);
 			rset.next();
+			BLOB myblobFull = ((OracleResultSet) rset).getBLOB(5);
 			BLOB myblobThumb = ((OracleResultSet) rset).getBLOB(3);
 			BLOB myblobRegular = ((OracleResultSet) rset).getBLOB(4);
-			BLOB myblobFull = ((OracleResultSet) rset).getBLOB(5);
 
+			// Write the full size image to the blob object.
+			OutputStream fullOutstream = myblobFull.getBinaryOutputStream();
+			ImageIO.write(full_image, "jpg", fullOutstream);
 			// Write the thumbnail size image to the blob object.
 			OutputStream thumbOutstream = myblobThumb.getBinaryOutputStream();
 			ImageIO.write(thumbnail, "jpg", thumbOutstream);
 			// Write the regular size image to the blob object.
 			OutputStream regularOutstream = myblobRegular.getBinaryOutputStream();
 			ImageIO.write(regular_image, "jpg", regularOutstream);
-			// Write the full size image to the blob object.
-			OutputStream fullOutstream = myblobFull.getBinaryOutputStream();
-			ImageIO.write(full_image, "jpg", fullOutstream);
 
 			// Commit the changes to database.
 			stmt.executeUpdate("commit");
@@ -174,9 +174,9 @@ public class UploadImage extends HttpServlet
 			response.sendRedirect("UploadImage.jsp");
 			
 			instream.close();
+			fullOutstream.close();
 			thumbOutstream.close();
 			regularOutstream.close();
-			fullOutstream.close();
 
 			// Close connection.
 			conn.close();
