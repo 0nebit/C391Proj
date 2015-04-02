@@ -48,17 +48,17 @@
 			query += " patient_id,";
 			group += " patient_id,";
 			table += "<th>Patient ID</th>";
-			checks++;
+			//checks++;
 		} if (cb_test) {
 			query += " test_type,";
 			group += " test_type,";
 			table += "<th>Test Type</th>";
-			checks++;
+			//checks++;
 		} if (cb_date) {
 			query += " TO_CHAR(TRUNC(test_date,";
 			group += " TO_CHAR(TRUNC(test_date,";
 			table += "<th>Test Date</th>";
-			checks++;
+			//checks++;
 			switch (selected) {
 			  // weekly
 				case 1:
@@ -83,9 +83,8 @@
 		group = group.substring(0, group.length()-1) + ")";
 
 		// combine query components
-		query += " COUNT(i.record_id) FROM persons p, radiology_record r, pacs_images i WHERE p.person_id = r.patient_id AND r.record_id = i.record_id" + group;
-		// String query2 = "SELECT p.person_id, r.test_type, TRUNC(r.test_date, 'IW') AS test_date, COUNT(i.record_id) AS image_count FROM persons p, radiology_record r, pacs_images i WHERE p.person_id = r.patient_id AND r.record_id = i.record_id GROUP BY CUBE(p.person_id, r.test_type, test_date)";
-
+		query += " COUNT(image_id) FROM cube_view" + group;
+		
 		table += "<th>Number of Images</th>";
 	%>
 
@@ -106,12 +105,16 @@
 			try {
 				statement = conn.createStatement();
 				results = statement.executeQuery(query);
+				int columns = results.getMetaData().getColumnCount();
 
 				// print data
-				while (results != null && results.next()) {
+				while (results.next()) {
 					out.println("<tr>");
-					for (int i = 1; i <= checks; i++) {
-						out.println("<td>" + results.getString(i) + "</td>");
+					for (int i = 1; i <= columns+1; i++) {
+						out.println("<td>");
+						if (results.getString(i) != null) {
+							out.println(results.getString(i) + "</td>");
+						}
 					}
 					out.println("</tr>");
 				}
