@@ -41,8 +41,8 @@ public class UploadImage extends HttpServlet
 	public String response_message = "";
 
 	// Change the following parameters to connect to the oracle database.
-	String username = "bjw1";
-	String password = "02cambria";
+	String username = "lisheung";
+	String password = "tformers1";
 	String drivername = "oracle.jdbc.driver.OracleDriver";
 	String dbstring ="jdbc:oracle:thin:@gwynne.cs.ualberta.ca:1521:CRS";
 
@@ -53,6 +53,10 @@ public class UploadImage extends HttpServlet
 		FileItem image_file = null;
 		int record_id = 0;
 		int image_id;
+		InputStream inStream = null;
+		OutputStream fullOutstream = null;
+		OutputStream thumbOutstream = null;
+		OutputStream regularOutstream = null;
 
 		// Check if a record ID has been entered.
 		if(request.getParameter("recordID") == null || request.getParameter("recordID").equals("")) 
@@ -133,9 +137,9 @@ public class UploadImage extends HttpServlet
 			}
 
 			// Get the image stream.
-			InputStream instream = image_file.getInputStream();
+			inStream = image_file.getInputStream();
 
-			BufferedImage full_image = ImageIO.read(instream);
+			BufferedImage full_image = ImageIO.read(inStream);
 			BufferedImage thumbnail = shrink(full_image, 10);
 			BufferedImage regular_image = shrink(full_image, 5);
 
@@ -153,18 +157,18 @@ public class UploadImage extends HttpServlet
 			String cmd = "SELECT * FROM pacs_images WHERE image_id = " + image_id + " FOR UPDATE";
 			rset = stmt.executeQuery(cmd);
 			rset.next();
-			BLOB myblobFull = ((OracleResultSet) rset).getBLOB(5);
-			BLOB myblobThumb = ((OracleResultSet) rset).getBLOB(3);
-			BLOB myblobRegular = ((OracleResultSet) rset).getBLOB(4);
+			BLOB thumb = ((OracleResultSet) rset).getBLOB("thumbnail");
+			BLOB regular = ((OracleResultSet) rset).getBLOB("regular_size");
+			BLOB full = ((OracleResultSet) rset).getBLOB("full_size");
 
 			// Write the full size image to the blob object.
-			OutputStream fullOutstream = myblobFull.getBinaryOutputStream();
+			fullOutstream = full.getBinaryOutputStream();
 			ImageIO.write(full_image, "jpg", fullOutstream);
 			// Write the thumbnail size image to the blob object.
-			OutputStream thumbOutstream = myblobThumb.getBinaryOutputStream();
+			thumbOutstream = thumb.getBinaryOutputStream();
 			ImageIO.write(thumbnail, "jpg", thumbOutstream);
 			// Write the regular size image to the blob object.
-			OutputStream regularOutstream = myblobRegular.getBinaryOutputStream();
+			regularOutstream = regular.getBinaryOutputStream();
 			ImageIO.write(regular_image, "jpg", regularOutstream);
 
 			// Commit the changes to database.
@@ -173,11 +177,6 @@ public class UploadImage extends HttpServlet
 			session.setAttribute("msg", response_message);
 			response.sendRedirect("UploadImage.jsp");
 			
-			instream.close();
-			fullOutstream.close();
-			thumbOutstream.close();
-			regularOutstream.close();
-
 			// Close connection.
 			conn.close();
 		} 
@@ -186,6 +185,29 @@ public class UploadImage extends HttpServlet
 		{
 			response_message = ex.getMessage();
 		} 
+
+		finally 
+		{
+			if(inStream != null)
+			{
+				inStream.close();
+			}
+
+			if(fullOutstream != null) 
+			{
+				fullOutstream.close();
+			}
+
+			if(thumbOutstream != null) 
+			{
+				thumbOutstream.close();
+			}
+
+			if(regularOutstream != null) 
+			{
+				regularOutstream.close();
+			}
+		}
 	}
 
 	// Shrink image by a factor of n, and return the shrunk image.
