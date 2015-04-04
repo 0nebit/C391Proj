@@ -25,7 +25,7 @@
 		<input name="cb_patient" type="checkbox" value="1">Patient Name<br>
 		<input name="cb_test" type="checkbox" value="1">Test Type<br>
 		<input name="cb_date" type="checkbox" value="1">Time Period<br>
-		<p>Sort by:</p>
+		<p>Sort by (if Time Period has been checkboxed):</p>
 		<select name="select_hierarchy">
 		  <option value="1">Week</option>
 		  <option value="2">Month</option>
