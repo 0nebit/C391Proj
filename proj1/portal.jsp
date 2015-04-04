@@ -38,5 +38,9 @@
        out.println("<li><center><a href=\"http://ui10.cs.ualberta.ca:16150/project/manage_users.jsp\"target=\"_self\">Manage users</a></center></li>");
        }
        %>
+    <li><center>
+	<a href="http://ui10.cs.ualberta.ca:16150/project/search.jsp" 
+	   target="_self">Search</a>
+    </center></li>
   </body>
 </html>
