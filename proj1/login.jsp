@@ -80,7 +80,7 @@
        session.setAttribute("u_class", r_class);
 
        // redirect to main work portal
-       String redirect_url = "http://ui10.cs.ualberta.ca:16150/project/portal.jsp";
+       String redirect_url = "/proj1/portal.jsp";
        response.sendRedirect(redirect_url);
        }
        else

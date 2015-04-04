@@ -5,7 +5,6 @@
   </head>
   <body>
     <h1><center>Main Portal</center></h1>
-    <p><center>Status</center></p>
     <%@ page import = "java.util.*" %>
     <%
        HttpSession sess = request.getSession();
@@ -29,18 +28,30 @@
        }
        %>
     <li><center>
-	<a href="/proj1/edit_account.jsp" 
+	<a href="http://ui10.cs.ualberta.ca:16150/project/edit_account.jsp" 
 	   target="_self">Edit account</a>
     </center></li>
     <%
        if (class_str.equals("a"))
        {
        out.println("<li><center><a href=\"/proj1/manage_users.jsp\"target=\"_self\">Manage users</a></center></li>");
+       out.println("<li><center><a href=\"/proj1/reportPrompt.jsp\"target=\"_self\">Report Generation</a></center></li>");
+       out.println("<li><center><a href=\"/proj1/olapPrompt.jsp\"target=\"_self\">Data Analysis</a></center></li>");
+       }
+       %>
+    <%
+       if (class_str.equals("r"))
+       {
+       out.println("<li><center><a href=\"/proj1/UploadImage.jsp\"target=\"_self\">Upload Image</a></center></li>");
        }
        %>
     <li><center>
 	<a href="/proj1/search.jsp" 
 	   target="_self">Search</a>
+    </center></li>
+    <li><center>
+	<a href="/proj1/HelpPage.html" 
+	   target="_self">Help Page</a>
     </center></li>
   </body>
 </html>
