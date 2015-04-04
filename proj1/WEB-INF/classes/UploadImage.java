@@ -113,6 +113,8 @@ public class UploadImage extends HttpServlet
 							// Invalid recordID, send message to jsp.
 							response_message = "<p><font color=FF0000>Record ID Does Not Exist In Database.</font></p>";
 							session.setAttribute("msg", response_message);
+							// Close connection.
+							conn.close();
 							response.sendRedirect("UploadImage.jsp");
 						}
 					}
@@ -127,6 +129,8 @@ public class UploadImage extends HttpServlet
 						// No file, send message to jsp.
 						response_message = "<p><font color=FF0000>No File Selected For Record ID.</font></p>";
 						session.setAttribute("msg", response_message);
+						// Close connection.
+						conn.close();
 						response.sendRedirect("UploadImage.jsp");
 					}
 				}
@@ -153,30 +157,38 @@ public class UploadImage extends HttpServlet
 			String cmd = "SELECT * FROM pacs_images WHERE image_id = " + image_id + " FOR UPDATE";
 			rset = stmt.executeQuery(cmd);
 			rset.next();
+			BLOB myblobFull = ((OracleResultSet) rset).getBLOB(5);
 			BLOB myblobThumb = ((OracleResultSet) rset).getBLOB(3);
 			BLOB myblobRegular = ((OracleResultSet) rset).getBLOB(4);
-			BLOB myblobFull = ((OracleResultSet) rset).getBLOB(5);
 
+			// Write the full size image to the blob object.
+			OutputStream fullOutstream = myblobFull.getBinaryOutputStream();
+			ImageIO.write(full_image, "jpg", fullOutstream);
 			// Write the thumbnail size image to the blob object.
 			OutputStream thumbOutstream = myblobThumb.getBinaryOutputStream();
 			ImageIO.write(thumbnail, "jpg", thumbOutstream);
 			// Write the regular size image to the blob object.
 			OutputStream regularOutstream = myblobRegular.getBinaryOutputStream();
 			ImageIO.write(regular_image, "jpg", regularOutstream);
-			// Write the full size image to the blob object.
-			OutputStream fullOutstream = myblobFull.getBinaryOutputStream();
-			ImageIO.write(full_image, "jpg", fullOutstream);
 
 			// Commit the changes to database.
 			stmt.executeUpdate("commit");
 			response_message = "<p><font color=00CC00>Upload Successful.</font></p>";
 			session.setAttribute("msg", response_message);
+
+			instream.close();
+			fullOutstream.close();
+			thumbOutstream.close();
+			regularOutstream.close();
+
+			// Close connection.
+			conn.close();
 			response.sendRedirect("UploadImage.jsp");
 			
 			instream.close();
+			fullOutstream.close();
 			thumbOutstream.close();
 			regularOutstream.close();
-			fullOutstream.close();
 
 			// Close connection.
 			conn.close();

@@ -88,8 +88,8 @@ CREATE TABLE pacs_images (
 CREATE SEQUENCE image_id_sequence;
 
 /*
- *  to store information for data analysis
+ *  to store information for data analysis cube
  */
-CREATE OR REPLACE VIEW analysis_view AS
-SELECT r.patient_id, r.test_type, r.test_date, i.image_id
-FROM radiology_record r FULL JOIN pacs_images pi ON r.record_id = i.record_id;
+CREATE OR REPLACE VIEW cube_view AS
+SELECT r.patient_id, r.test_type, r.test_date, pi.image_id
+FROM radiology_record r FULL JOIN pacs_images pi ON r.record_id = pi.record_id;

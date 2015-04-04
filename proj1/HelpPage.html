@@ -6,12 +6,26 @@
 
 <h1>Help Page</h1>
 
+<div class="topcorner1">
+<a href="url">Portal</a>
+</div>
+
+<style type="text/css">
+	.topcorner1
+{
+   position:absolute;
+   top:10;
+   right:10;
+	}
+</style>
+
 <p><H3>Installing the Radiology Information System 2000</H3></p>
 
 <p>1. Clone the repository containing all the files you need at: https://github.com/CMPUT391CBJ/C391Proj
 <br>2. After you have cloned the repository follow the file path: C391Proj/proj1/WEB-INF/classes. Within classes there will be a makefile. Type "make all" into the terminal to run the makefile.
-<br>3. Open sqlplus in terminal and type in "@setup.sql" press enter to run the file. Next type in "@populate.sql" press enter and finally exit sqlplus.
-<br>4. Installation should now be complete.
+<br>3. Drag the whole proj1 folder into your catalina folder on your desktop.
+<br>4. Open sqlplus in terminal and type in "@setup.sql" press enter to run the file. Next type in "@populate.sql" press enter and finally exit sqlplus.
+<br>5. Installation should now be complete.
 </p>
 
 <p><H3>Logging In</H3></p>
@@ -20,14 +34,14 @@ Will allow the user to login and be able to use the Radiology Information System
 <p><H3>Login As a Patient</H3></p>
 <p><u>Given links:</u>
 <br>
-<br><font color="0000FF">Searching</font>
+<br><font color="0000FF">Searching (Can only view his/her own records)</font>
 <br><font color="0000FF">Edit Personal Info</font>
 </p>
 
 <p><H3>Login As a Doctor</H3></p>
 <p><u>Given links:</u>
 <br>
-<br><font color="0000FF">Searching</font>
+<br><font color="0000FF">Searching (Can only view records of his/her patients)</font>
 <br><font color="0000FF">Edit Personal Info</font>
 </p>
 
@@ -35,7 +49,7 @@ Will allow the user to login and be able to use the Radiology Information System
 <p><u>Given links:</u>
 <br>
 <br><font color="0000FF">Upload Image</font>
-<br><font color="0000FF">Searching</font>
+<br><font color="0000FF">Searching (Can only view records done by oneself)</font>
 <br><font color="0000FF">Edit Personal Info</font>
 </p>
 
@@ -43,27 +57,27 @@ Will allow the user to login and be able to use the Radiology Information System
 <p><u>Given links:</u>
 <br>
 <br><font color="0000FF">Report Generating</font>
-<br><font color="0000FF">Searching</font>
+<br><font color="0000FF">Searching (Can view any records)</font>
 <br><font color="0000FF">User Management</font>
 <br><font color="0000FF">Data Analysis</font>
 <br><font color="0000FF">Edit Personal Info</font>
 </p>
 
 <p><H3>Logging Out</H3></p>
-At the bottom of every page there will be a logout link which will log the user out. This will take the user back to the welcome page.
+At the top right corner of mostly every page there will be a logout link. This will take the user back to the welcome page.
 
 <p><H3>Edit Personal Info</H3></p>
-The user can click on this link to edit their personal information as well as change their password.
+The user can click on this link to edit their personal information as well as change their password. The user can enter in new values into the displayed text fields and press submit once they are satisfied with the changes. If sucessful they will be displayed their updated information.
 
 <p><H3>User Management</H3></p>
-As a system administrator, the user can manage (to enter or update) the user information such as the information stored in tables users, persons, or family_doctor. The user will be able enter/update the user_name, password, and class in ther users table. The first_name, last_name, address, email, and phone in the persons table. The doctor_id, and patient_id in the family_doctor table.
+As a system administrator, the user can manage (to enter or update) the user information such as the information stored in tables users, persons, or family_doctor. The user will be able enter/update the user_name, password, and class in ther users table. The first_name, last_name, address, email, and phone in the persons table. The doctor_id, and patient_id in the family_doctor table. Depending on what the user wants to manage they will be able to enter the Person's ID, the Person's Username, or the Person's Family doctor ID. This will allow the user to update the information of the latter. Once the user enters in the Person's ID, Username, or family doctor, they will be displayed texted fields which will allow them to edit the corresponding information depending on what the user first chose to enter in (ID, Username, Doctor). Once they have entered new information into the text fields they can press submit and they will be displayed the newly updated information.
 
 <p><H3>Report Generating</H3></p>
-As a system administrator, the user can the list of all patients with a by entering a specified diagnosis and a given time period. The report will generate a list containing the name, address, and phone number of the petients, and testing date of the first radiology record that contains the specified daignosis.
+As a system administrator, the user can the list of all patients with a by entering a specified diagnosis and a given time period. The report will generate a list containing the name, address, and phone number of the petients, and testing date of the first radiology record that contains the specified daignosis. The user must first enter in a diagnosis followed by the start date and end date in the given text fields. Once they have done so, they can press submit and will then be displayed the report.
 
 
 <p><H3>Upload Image</H3></p>
-As a Radiologist, the user can select an image to upload to the database. If no image is selected when submitting, the system will ask the user for one. If the record id inputed is not in the database the system will tell the user.</p>
+As a Radiologist, the user can select an image to upload to the database. If no image is selected when submitting, the system will ask the user for one. If the record id inputed is not in the database the system will tell the user. The user will be given a radiologist record id text field and a browse button below which will allow the user to upload thier image to the database. Once the user has entered in the radiologist record id and an image they can press submit and they will be notified if the image was successfully added to the database.</p>
 
 <p><H3>Searching</H3></p>
 dfadf
@@ -71,7 +85,10 @@ dfadf
 
 
 <p><H3>Data Analysis</H3></p>
-dasff
-
+As a system adminstrator, the user can generate and display an OLAP report for data analysis. A user of this module may choose to display the number of images for each patient, test type, and/or period of time. For example, a user may choose to display the number of images for each patient; or display the number of images  for each test type for each month. A user can choose any combination of patient, test type, and/or period of time via checkboxes. If the user choses a time period he/she must also choose the type of time period (week, month, year). If they do not select any option or a time period type, a message will prompt the user to select options.
+<br>
+<br>
+<br>
+<br>
 </body>
 </html>
