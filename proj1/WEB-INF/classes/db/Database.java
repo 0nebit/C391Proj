@@ -10,8 +10,8 @@ public class Database {
 
 	public Database() {
 		conn = null;
-		username = "bjw1";
-		password = "02cambria";
+		username = "chuan4";
+		password = "a12345678";
 	}
 
 	public Connection connect() {
