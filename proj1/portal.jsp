@@ -28,7 +28,7 @@
        }
        %>
     <li><center>
-	<a href="http://ui10.cs.ualberta.ca:16150/project/edit_account.jsp" 
+	<a href="/proj1/edit_account.jsp" 
 	   target="_self">Edit account</a>
     </center></li>
     <%
