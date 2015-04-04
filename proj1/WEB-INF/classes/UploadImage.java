@@ -41,8 +41,8 @@ public class UploadImage extends HttpServlet
 	public String response_message = "";
 
 	// Change the following parameters to connect to the oracle database.
-	String username = "lisheung";
-	String password = "tformers1";
+	String username = "chuan4";
+	String password = "a12345678";
 	String drivername = "oracle.jdbc.driver.OracleDriver";
 	String dbstring ="jdbc:oracle:thin:@gwynne.cs.ualberta.ca:1521:CRS";
 
