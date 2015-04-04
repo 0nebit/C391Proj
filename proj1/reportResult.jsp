@@ -7,8 +7,7 @@
 	
 	<div class="topcorner1">
 	<a href="/proj1/HelpPage.html">Help Page</a>
-	<a href="url">Portal</a>
-	<a href="url">Logout</a>
+	<a href="/proj1/portal.jsp">Portal</a>
 	</div>
 
 	<style type="text/css">
