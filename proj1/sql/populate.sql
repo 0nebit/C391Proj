@@ -17,5 +17,9 @@ insert into family_doctor values (4, 2);
 insert into family_doctor values (5, 3);
 insert into family_doctor values (5, 4);
 
-insert into radiology_record values (1, 3, 4, 2, 'type 1', TO_DATE('2015-02-07', 'YYYY-MM-DD'), TO_DATE('2015-02-09', 'YYYY-MM-DD'), 'diag 1', 'description 1');
-
+insert into radiology_record values (1, 2, 4, 2, 'type 1', TO_DATE('2015-02-07', 'YYYY-MM-DD'), TO_DATE('2015-02-09', 'YYYY-MM-DD'), 'diag 1', 'description 1');
+insert into radiology_record values (2, 2, 4, 2, 'type 2', TO_DATE('2015-02-07', 'YYYY-MM-DD'), TO_DATE('2015-02-09', 'YYYY-MM-DD'), 'diag 2', 'blah');
+insert into radiology_record values (3, 3, 4, 2, 'type 3', TO_DATE('2015-02-07', 'YYYY-MM-DD'), TO_DATE('2015-02-09', 'YYYY-MM-DD'), 'diag 3', 'abc');
+insert into radiology_record values (4, 4, 5, 2, 'type 4', TO_DATE('2015-02-07', 'YYYY-MM-DD'), TO_DATE('2015-02-09', 'YYYY-MM-DD'), 'diag 4', 'blah');
+insert into radiology_record values (5, 4, 5, 2, 'type 5', TO_DATE('2015-02-07', 'YYYY-MM-DD'), TO_DATE('2015-02-09', 'YYYY-MM-DD'), 'diag 5', 'blah');
+insert into radiology_record values (6, 5, 5, 2, 'type 6', TO_DATE('2015-02-07', 'YYYY-MM-DD'), TO_DATE('2015-02-09', 'YYYY-MM-DD'), 'diag 6', 'blah');
