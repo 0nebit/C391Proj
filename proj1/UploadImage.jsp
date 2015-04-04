@@ -4,7 +4,7 @@
 	<H1>Upload Image</H1>
 
 	<div class="topcorner1">
-	<a href="http://ua15.cs.ualberta.ca:16060/proj1/HelpPage.html">Help Page</a>
+	<a href="/proj1/HelpPage.html">Help Page</a>
 	<a href="url">Portal</a>
 	<a href="url">Logout</a>
 	</div>

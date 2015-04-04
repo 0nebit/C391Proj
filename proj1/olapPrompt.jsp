@@ -6,7 +6,7 @@
 	<h1>Data Analysis</h1>
 	
 	<div class="topcorner1">
-	<a href="http://ua15.cs.ualberta.ca:16060/proj1/HelpPage.html">Help Page</a>
+	<a href="/proj1/HelpPage.html">Help Page</a>
 	<a href="url">Portal</a>
 	<a href="url">Logout</a>
 	</div>
@@ -25,7 +25,7 @@
 		<input name="cb_patient" type="checkbox" value="1">Patient Name<br>
 		<input name="cb_test" type="checkbox" value="1">Test Type<br>
 		<input name="cb_date" type="checkbox" value="1">Time Period<br>
-		<p>Sort by:</p>
+		<p>Sort by (if Time Period has been checkboxed):</p>
 		<select name="select_hierarchy">
 		  <option value="1">Week</option>
 		  <option value="2">Month</option>
