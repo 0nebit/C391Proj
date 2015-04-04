@@ -29,17 +29,17 @@
        }
        %>
     <li><center>
-	<a href="http://ui10.cs.ualberta.ca:16150/project/edit_account.jsp" 
+	<a href="/proj1/edit_account.jsp" 
 	   target="_self">Edit account</a>
     </center></li>
     <%
        if (class_str.equals("a"))
        {
-       out.println("<li><center><a href=\"http://ui10.cs.ualberta.ca:16150/project/manage_users.jsp\"target=\"_self\">Manage users</a></center></li>");
+       out.println("<li><center><a href=\"/proj1/manage_users.jsp\"target=\"_self\">Manage users</a></center></li>");
        }
        %>
     <li><center>
-	<a href="http://ui10.cs.ualberta.ca:16150/project/search.jsp" 
+	<a href="/proj1/search.jsp" 
 	   target="_self">Search</a>
     </center></li>
   </body>
