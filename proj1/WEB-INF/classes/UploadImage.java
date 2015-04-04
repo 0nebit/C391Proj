@@ -113,6 +113,8 @@ public class UploadImage extends HttpServlet
 							// Invalid recordID, send message to jsp.
 							response_message = "<p><font color=FF0000>Record ID Does Not Exist In Database.</font></p>";
 							session.setAttribute("msg", response_message);
+							// Close connection.
+							conn.close();
 							response.sendRedirect("UploadImage.jsp");
 						}
 					}
@@ -127,6 +129,8 @@ public class UploadImage extends HttpServlet
 						// No file, send message to jsp.
 						response_message = "<p><font color=FF0000>No File Selected For Record ID.</font></p>";
 						session.setAttribute("msg", response_message);
+						// Close connection.
+						conn.close();
 						response.sendRedirect("UploadImage.jsp");
 					}
 				}
@@ -171,6 +175,14 @@ public class UploadImage extends HttpServlet
 			stmt.executeUpdate("commit");
 			response_message = "<p><font color=00CC00>Upload Successful.</font></p>";
 			session.setAttribute("msg", response_message);
+
+			instream.close();
+			fullOutstream.close();
+			thumbOutstream.close();
+			regularOutstream.close();
+
+			// Close connection.
+			conn.close();
 			response.sendRedirect("UploadImage.jsp");
 			
 			instream.close();
