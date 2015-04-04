@@ -6,7 +6,7 @@
   <h1>Data Analysis</h1>
   
   <div class="topcorner1">
-	<a href="http://ua11.cs.ualberta.ca:16140/proj1/HelpPage.html">Help Page</a>
+	<a href="/proj1/HelpPage.html">Help Page</a>
 	<a href="url">Portal</a>
 	<a href="url">Logout</a>
 	</div>
