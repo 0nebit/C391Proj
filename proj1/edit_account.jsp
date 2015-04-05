@@ -1,6 +1,21 @@
 <html>
   <body>
     <h1>Edit Account</h1>
+
+    <div class="topcorner1">
+      <a href="/proj1/HelpPage.html">Help Page</a>
+      <a href="/proj/portal.jsp">Portal</a>
+    </div>
+
+    <style type="text/css">
+      .topcorner1
+      {
+      position:absolute;
+      top:10;
+      right:10;
+      }
+    </style>
+
     <%@ page import = "java.sql.*" %>
     <%
        if (request.getParameter("submit_edit") != null)
